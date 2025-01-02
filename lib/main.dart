@@ -2,6 +2,7 @@ import 'package:chitchat/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
 // import 'screens/auth/login_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/services.dart';
 import 'firebase_options.dart';
 
 //global object for accessing device screen size
@@ -9,8 +10,18 @@ late Size mq;
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  _initiateFirebase();
-  runApp(const MyApp());
+  // to make it full screen --> immersiveSticky
+  // to exit from full screen, use edge to edge
+  SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
+
+  // to make it portrait only
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]).then((value) {
+    _initiateFirebase();
+    runApp(const MyApp());
+  });
 }
 
 class MyApp extends StatelessWidget {

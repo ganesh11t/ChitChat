@@ -1,7 +1,9 @@
 import 'package:chitchat/screens/home_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import '../../main.dart';
+// ignore: duplicate_import
 import 'home_screen.dart';
 
 //Splash screen for the app
@@ -16,11 +18,13 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    Future.delayed(Duration(milliseconds: 1500), () {
+    Future.delayed(Duration(milliseconds: 2000), () {
+      // to exit from full screen, use edge to edge
+      SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
+      SystemChrome.setSystemUIOverlayStyle(
+          SystemUiOverlayStyle(statusBarColor: Colors.transparent));
       Navigator.pushReplacement(
-          // ignore: use_build_context_synchronously
-          context,
-          MaterialPageRoute(builder: (_) => const HomeScreen()));
+          context, MaterialPageRoute(builder: (_) => const HomeScreen()));
     });
   }
 
@@ -45,7 +49,7 @@ class _SplashScreenState extends State<SplashScreen> {
               width: mq.width * .5,
               child: Image.asset('images/icon.png')),
 
-          // login with google button
+          // Text Made in Nepal
           Positioned(
               bottom: mq.height * .15,
               width: mq.width,
