@@ -8,6 +8,7 @@ import 'firebase_options.dart';
 late Size mq;
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   _initiateFirebase();
   runApp(const MyApp());
 }
@@ -29,7 +30,6 @@ class MyApp extends StatelessWidget {
             color: Colors.black, fontWeight: FontWeight.normal, fontSize: 20),
 
         backgroundColor: Colors.white,
-        backgroundColor: Color.fromARGB(255, 51, 0, 255),
         // Theme.of(context).primaryColor,
       )
           // primarySwatch: Colors.red,
