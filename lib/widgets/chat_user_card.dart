@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:chitchat/models/chat_user.dart';
+import 'package:chitchat/screens/chat_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../main.dart';
@@ -24,7 +25,10 @@ class _ChatUserCardState extends State<ChatUserCard> {
         borderRadius: BorderRadius.circular(15),
       ),
       child: InkWell(
-        onTap: () {},
+        onTap: () {
+          Navigator.push(context,
+              MaterialPageRoute(builder: (_) => ChatScreen(user: widget.user)));
+        },
         child: ListTile(
           // leading: CircleAvatar(child: const Icon(Icons.person),
 
